@@ -67,6 +67,8 @@ const Details: React.FC = ()=> {
     router.push('/create');
     
   }
+
+  
  // 임시로 띄운 오른쪽 이미지 미리보기
   useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +83,9 @@ const Details: React.FC = ()=> {
     };
     fetchData();
   }, []);
+
+  
+
   return (
     <>
       <SC.Header>
