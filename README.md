@@ -2,9 +2,9 @@
 
 ## 인싸가 되고싶어? 소셜 미디어 Inssagram
 
-인스타그램 + 블라인드로 직장인들의 소셜 네트워크 웹 어플리케이션
+![image](https://github.com/Daily-manjoo/FE/assets/122348173/b0c68b6a-d7fd-47df-81c5-933d0ec20321)
 
-## **Project**!
+인스타그램 + 블라인드로 직장인들의 소셜 네트워크 웹 어플리케이션
 
 ### 🎯 Trouble Shooting
 
@@ -14,44 +14,10 @@ https://github.com/inssagram/FE/issues?q=is%3Aissue+is%3Aclosed
 
 ---
 
-### FE
+![image](https://github.com/Daily-manjoo/FE/assets/122348173/135da105-cbba-4c25-b575-fe27f847b311)
 
-`Next.js + React JS`
+### ⚙️ Project Architecture
 
-`Typescript`
+---
 
-`Redux-toolkit`
-
-`Axios`
-
-`WebSocket`
-
-`SSE`
-
-`FireBase`
-
-`Styled-components`
-
-`Fontawesome`
-
-### BE
-
-`SpringBoot` `SpringSecurity` `SpringDataJPA`
-
-`AWS RDS(MySQL)` `AWS S3`
-
-`JWT` 
-
- `AWS Certificate Manager` `SSL`
-
- `WebSoket` `SSE`
-
-### CI / CD
-
-**FE :**  `Github`  `Github Actions` `Vercel`
-
-**BE :**  `Github Actions` `AWS` `EC2` `AWS CodeDeploy`
-
-**Communication**
-
-`Slack` `Gather`
+![image](https://github.com/Daily-manjoo/FE/assets/122348173/09e256c6-51d2-4ed1-8435-5f86944c4b5b)
