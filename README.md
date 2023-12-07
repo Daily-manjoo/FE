@@ -4,7 +4,8 @@
 
 인스타그램 + 블라인드로 직장인들의 소셜 네트워크 웹 어플리케이션
 
-## **Project**
+## **Project**![image](https://github.com/Daily-manjoo/FE/assets/122348173/e8424106-802f-49b9-9355-f31c330f191f)
+
 
 [inssagram](https://github.com/inssagram)
 
