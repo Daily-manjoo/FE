@@ -14,10 +14,50 @@ https://github.com/inssagram/FE/issues?q=is%3Aissue+is%3Aclosed
 
 ---
 
-![image](https://github.com/Daily-manjoo/FE/assets/122348173/135da105-cbba-4c25-b575-fe27f847b311)
+### FE
+
+`Next.js + React JS`
+
+`Typescript`
+
+`Redux-toolkit`
+
+`Axios`
+
+`WebSocket`
+
+`SSE`
+
+`FireBase`
+
+`Styled-components`
+
+`Fontawesome`
+
+### BE
+
+`SpringBoot` `SpringSecurity` `SpringDataJPA`
+
+`AWS RDS(MySQL)` `AWS S3`
+
+`JWT` 
+
+ `AWS Certificate Manager` `SSL`
+
+ `WebSoket` `SSE`
+
+### CI / CD
+
+**FE :**  `Github`  `Github Actions` `Vercel`
+
+**BE :**  `Github Actions` `AWS` `EC2` `AWS CodeDeploy`
+
+**Communication**
+
+`Slack` `Gather`
 
 ### ⚙️ Project Architecture
 
 ---
 
-![image](https://github.com/Daily-manjoo/FE/assets/122348173/09e256c6-51d2-4ed1-8435-5f86944c4b5b)
+![image](https://github.com/Daily-manjoo/FE/assets/122348173/d798a2eb-559e-4711-9544-7cc3363b23be)
