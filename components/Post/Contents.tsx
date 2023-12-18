@@ -14,13 +14,14 @@ import {
   faHeart as fasHeart,
   faBookmark as fasBookmark,
 } from "@fortawesome/free-solid-svg-icons";
+import { faCircleChevronRight, faCircleChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { handleError } from "@/utils/errorHandler";
 import { HeartButton } from "@/components/atoms/Button";
 import postLikePostAxios from "@/services/postInfo/postLikePost";
 import postBookmarkPostAxios from "@/services/postInfo/postBookmarkPost";
 import deleteBookmarkPostAxios from "@/services/postInfo/deleteBookmarkPost";
 import { PostDetailData } from "@/types/PostTypes";
-
+import { base64 } from "./base64";
 // type HandleLikeClick = (postId: number) => void;
 
 interface PostContentsProps {
@@ -32,6 +33,8 @@ const PostContents: React.FC<PostContentsProps> = ({ post }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isSaved, setIsSaved] = useState(false);
   const router = useRouter();
+  const [slideProps, setSlideProps] = useState<number>(0)
+
 
   const handleActionClick = async (postId: number, actionType: string) => {
     try {
@@ -60,14 +63,48 @@ const PostContents: React.FC<PostContentsProps> = ({ post }) => {
     router.push(`/post/${post.postId}/comments`);
   };
 
+  const handleSlideProps = (direction: string) => {
+    if(direction === "right" && slideProps <= post.image.length){
+      setSlideProps((prev) => prev + 1)
+      return
+    }
+    if(direction === "left" && slideProps !== 0){
+      setSlideProps((prev) => prev - 1)
+      return
+    }
+  }
   return (
     <div>
-      <PostImage
-        src={post.image ? post.image[0] : "/images/noImage.svg"}
-        alt="게시글"
-        width={412}
-        height={412}
-      />
+      <Slide>
+          {slideProps > 0 ? (
+              <LeftButton onClick={() => handleSlideProps("left")}>
+                <FontAwesomeIcon icon={faCircleChevronLeft}/>
+              </LeftButton>)
+              : null}
+            {post.image.length > 1 && slideProps < post.image.length - 1 ? (
+              <RightButton onClick={() => handleSlideProps("right")}>
+                <FontAwesomeIcon icon={faCircleChevronRight}/>
+              </RightButton>)
+              : null 
+          }
+        <ImageList slideProps={slideProps}>
+          {post.image.length > 0 ? (
+            post.image.map((v, i) => (
+            <ImageItem key={i}>
+              <Image
+                blurDataURL={base64}
+                src={v}
+                alt={v}
+                loading="lazy"
+                placeholder="blur"
+                width={420} 
+                height={420}
+                />
+            </ImageItem>
+            ))
+        ) : undefined}
+        </ImageList>
+      </Slide>
       <PostDetails>
         <ButtonArea>
           <Left>
@@ -115,11 +152,63 @@ const PostContents: React.FC<PostContentsProps> = ({ post }) => {
 
 export default PostContents;
 
-const PostImage = styled(Image)`
+const Slide = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`
+
+interface SlideProps{
+  slideProps: number
+}
+
+const ImageList = styled.ul<SlideProps>`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  min-height: 412px;
+  transform: translateX(${(props) => props.slideProps * (-432)}px);
+  transition: 0.3s ease-in-out;
+`
+
+const ImageItem = styled.li`
   min-width: 412px;
   min-height: 412px;
-  width: 100%;
-`;
+  position: relative;
+`
+
+const LeftButton = styled.button`
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 10;
+`
+
+const RightButton = styled.button`
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 10;
+`
+
 
 const PostDetails = styled.section`
   position: relative;

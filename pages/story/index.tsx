@@ -5,7 +5,6 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons/faPaperPlane";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import axiosInstance from "@/services/axiosInstance";
 
@@ -14,14 +13,14 @@ import axiosInstance from "@/services/axiosInstance";
 const Story: React.FC = () => {
   const router = useRouter()
   const [currentRotation, setCurrentRotation] = useState(0);
-  const [data, setData] = useState<dataItem[]>([])
+  const [data] = useState<dataItem[]>([])
   const [contentsIndex, setContentsIndex] = useState(0)
   const [imagesIndexArr, setImagesIndexArr] = useState<number[]>([]);
   const [flag, toggleFlag] = useState(false);
   const [availableIndex, setAvailableIndex] = useState<number[]>([]);
   const [onFilter, setOnFilter] = useState(false)
   const [animationStopped, setAnimationStopped] = useState(false)
-  
+  const { id } = router.query;
 
   interface dataItem{
     image: string[],
@@ -69,14 +68,23 @@ const Story: React.FC = () => {
     }
   };
 
-  // useEffect(() => {
-  //   getStorydata()
-  //   .then((res) => {
-  //     setData(res.data)
-  //     console.log(res)
-  //   })
-  //   .catch((error) => console.error(error))
-  // },[])
+
+  useEffect(() => {
+    try{
+      const axiosData = axiosInstance({
+        method: "get",
+        url: `/story/search-memberlist/2`,
+        headers: {
+          "Content-Type": "application/json",
+          charset: "utf-8",
+        }
+      });
+      console.log(axiosData);
+    }catch (error){
+      console.log(error)
+    }
+      
+    })
 
   useEffect(() => {
     setImagesIndexArr(Array(data.length).fill(0))
